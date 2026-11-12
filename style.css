@@ -1,0 +1,13 @@
+/*
+Theme Name: Melodija
+Author: Iman Topchi
+Description: Custom theme for Melodija Souvenir Shop, Ohrid
+Version: 1.0
+*/
+
+/* Test CSS: if the background turns cream, functions.php is loading style.css correctly */
+body {
+    font-family: system-ui, sans-serif;
+    background: #fbf7f2;
+    color: #2a2438;
+}
