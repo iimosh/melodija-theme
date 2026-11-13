@@ -19,3 +19,16 @@ if (button && overlay) {
     if (event.target.closest('a')) setMenu(false);
   });
 }
+
+document.documentElement.classList.add('js'); // CSS only hides .reveal elements when JS is running
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));

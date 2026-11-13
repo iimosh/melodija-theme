@@ -35,10 +35,24 @@ function melodija_image( $file, $alt, $class = '' ) {
     $url  = get_theme_file_uri( 'assets/images/' . $file );
 
     if ( file_exists( $path ) ) {
-        // ?v=<last modified time>: when you replace the image, the URL changes, so the browser can't show an old cached copy
         $url = add_query_arg( 'v', filemtime( $path ), $url );
         printf( '<img class="%s" src="%s" alt="%s">', esc_attr( $class ), esc_url( $url ), esc_attr( $alt ) );
     } else {
         printf( '<div class="%s placeholder" role="img" aria-label="%s"><span>%s</span></div>', esc_attr( $class ), esc_attr( $alt ), esc_html( $file ) );
+    }
+}
+
+/** True for image types that can have a transparent background (our cutouts). */
+function melodija_is_cutout( $file ) {
+    return in_array( strtolower( pathinfo( $file, PATHINFO_EXTENSION ) ), array( 'png', 'webp' ), true );
+}
+
+/**
+ * Runs a plugin shortcode, but only if that plugin is active.
+ * (If the plugin is off, do_shortcode would print the raw "[instagram-feed ...]" text on the page.)
+ */
+function melodija_shortcode( $tag, $shortcode ) {
+    if ( shortcode_exists( $tag ) ) {
+        echo do_shortcode( $shortcode );
     }
 }
