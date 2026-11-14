@@ -7,12 +7,22 @@
 
 function melodija_setup() {
     add_theme_support( 'title-tag' );
-
-    register_nav_menus( array(
-        'primary' => 'Main menu',
-    ) );
+    add_theme_support( 'post-thumbnails' );
 }
 add_action( 'after_setup_theme', 'melodija_setup' );
+
+require get_theme_file_path( 'inc/products.php' );
+
+/** The homepage sections shown in the menu: id => label. The ids match the <section id="..."> in front-page.php. */
+function melodija_sections() {
+    return array(
+        'top'        => 'Home',
+        'products'   => 'Products',
+        'reviews'    => 'Reviews',
+        'visit'      => 'Location',
+        'instagram'  => 'Instagram',
+    );
+}
 
 function melodija_assets() {
     $version = wp_get_theme()->get( 'Version' );

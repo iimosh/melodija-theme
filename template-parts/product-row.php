@@ -8,13 +8,23 @@
     <div class="product-row__media">
         <?php
         $classes = 'product-row__img';
-        if ( melodija_is_cutout( $args['image'] ) ) {
-            $classes .= ' product-row__img--cutout';
-        }
         if ( ! empty( $args['small'] ) ) {
             $classes .= ' product-row__img--small';
         }
-        melodija_image( $args['image'], $args['name'], $classes );
+
+        if ( ! empty( $args['image_id'] ) ) {
+            if ( in_array( get_post_mime_type( $args['image_id'] ), array( 'image/png', 'image/webp' ), true ) ) {
+                $classes .= ' product-row__img--cutout';
+            }
+            echo wp_get_attachment_image( $args['image_id'], 'large', false, array( 'class' => $classes, 'alt' => $args['name'] ) );
+        } elseif ( ! empty( $args['image'] ) ) {
+            if ( melodija_is_cutout( $args['image'] ) ) {
+                $classes .= ' product-row__img--cutout';
+            }
+            melodija_image( $args['image'], $args['name'], $classes );
+        } else {
+            echo '<div class="product-row__img placeholder"><span>Add a product photo</span></div>';
+        }
         ?>
 
         <?php if ( ! empty( $args['detail'] ) ) : ?>
@@ -27,10 +37,12 @@
         <h3 class="product-row__name"><?php echo esc_html( $args['name'] ); ?></h3>
         <p class="product-row__desc"><?php echo esc_html( $args['text'] ); ?></p>
 
-        <ul class="product-row__tags">
-            <?php foreach ( $args['tags'] as $tag ) : ?>
-                <li><?php echo esc_html( $tag ); ?></li>
-            <?php endforeach; ?>
-        </ul>
+        <?php if ( ! empty( $args['tags'] ) ) : ?>
+            <ul class="product-row__tags">
+                <?php foreach ( $args['tags'] as $tag ) : ?>
+                    <li><?php echo esc_html( $tag ); ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
     </div>
 </article>

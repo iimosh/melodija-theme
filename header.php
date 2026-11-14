@@ -17,7 +17,7 @@
         <span class="logo__sub">Souvenir shop</span>
     </a>
 
-   <button class="menu-button" aria-expanded="false" aria-controls="menu-overlay">
+    <button class="menu-button" aria-expanded="false" aria-controls="menu-overlay">
         <span class="menu-button__label">Menu</span>
         <span class="menu-button__dot" aria-hidden="true">+</span>
     </button>
@@ -25,12 +25,15 @@
 
 <div class="menu-overlay" id="menu-overlay" hidden>
     <nav class="menu-overlay__nav" aria-label="Main">
-        <?php
-        wp_nav_menu( array(
-            'theme_location' => 'primary',
-            'container'      => false,
-        ) );
-        ?>
+        <ul>
+            <?php foreach ( melodija_sections() as $id => $label ) : ?>
+                <li>
+                    <a href="<?php echo esc_url( home_url( '/#' . $id ) ); ?>"><?php echo esc_html( $label ); ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+<!--        esc_url() cleans a value used inside href or src.-->
+<!--        esc_html() cleans text shown on the page, so < becomes &lt; and so on.-->
     </nav>
     <p class="menu-overlay__footer">Macedonia · Ohrid · Since 1992</p>
 </div>

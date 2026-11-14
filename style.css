@@ -32,6 +32,9 @@ body {
 }
 body.menu-open { overflow: hidden; }
 
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: var(--header-height); }
+
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
@@ -134,8 +137,8 @@ a { color: inherit; }
 .menu-overlay__nav a {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    line-height: 1.25;
+    font-size: clamp(2rem, min(6vw, 7vh), 4.2rem);   /* 6 links must fit, also on short screens */
+    line-height: 1.3;
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -557,6 +560,7 @@ a { color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
     .float, .badge, .menu-overlay, .marquee__track { animation: none; }
     .js .reveal { opacity: 1; translate: none; transition: none; }
 }

@@ -4,7 +4,7 @@ get_header();
 
 <main>
 
-    <section class="hero">
+    <section class="hero" id="top">
         <div class="hero__wordmark">
             <p class="hero__script">Macedonia Ohrid</p>
             <h1 class="hero__title">
@@ -37,53 +37,8 @@ get_header();
         </div>
     </section>
 
-    <?php
-    $products = array(
-        array(
-            'name'  => 'Cups & mugs',
-            'text'  => 'So many shapes and designs, from classic mugs to cups you won\'t find anywhere else.',
-            'tags'  => array( 'Mugs', 'Cups', 'Many shapes' ),
-            'image' => 'hero-cup.png',
-            'small' => true,
-        ),
-        array(
-            'name'  => 'Tote bags',
-            'text'  => 'Canvas bags with Ohrid and Macedonian designs, for the beach, the market or every day.',
-            'tags'  => array( 'Big totes', 'Mini totes' ),
-            'image' => 'tote_bags.webp',
-        ),
-        array(
-            'name'   => 'Wallets & pouches',
-            'text'   => 'Wallets in every size, coin purses, and pouches that work just as well as a makeup bag.',
-            'tags'   => array( 'Wallets', 'Coin purses', 'Makeup bags' ),
-            'image'  => 'wallets.webp',
-        ),
-        array(
-            'name'  => 'Soaps & gift bags',
-            'text'  => 'Soaps on their own or tucked into a little bag, ready to give as a gift.',
-            'tags'  => array('With gift bag', 'With gift box', 'Natural Glycerin Soaps', 'Loofah Soap' ),
-            'image' => 'mini_bags_soap.webp',
-        ),
-        array(
-            'name'   => 'Kitchen textiles',
-            'text'   => 'Tea towels and pot holders with traditional motifs, a souvenir you\'ll use every day.',
-            'tags'   => array( 'Tea towels', 'Pot holders' ),
-            'image'  => 'towels.webp',
-        ),
-        array(
-            'name'  => 'Magnets',
-            'text'  => 'The classic souvenir, in many designs of Ohrid, the lake and Macedonia.',
-            'tags'  => array( 'Wooden', 'Ceramic', 'Metal' ),
-            'image' => 'magnets.webp',
-        ),
-        array(
-            'name'  => 'Puzzles',
-            'text'  => '500-piece puzzles of Ohrid and Macedonia, to rebuild the view at home.',
-            'tags'  => array( '500 pieces', 'Ohrid', 'Macedonia' ),
-            'image' => 'puzzle.webp',
-        ),
-    );
-    ?>
+    <?php $products = melodija_get_products(); ?>
+
 
     <section class="products" id="products">
         <header class="section-head reveal">
@@ -104,7 +59,7 @@ get_header();
         </div>
     </section>
 
-    <section class="made-by-us">
+    <section class="made-by-us" id="made-by-us">
         <div class="marquee" aria-hidden="true">
             <div class="marquee__track">
                 <?php for ( $copy = 0; $copy < 2; $copy++ ) : ?>
