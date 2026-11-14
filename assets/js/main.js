@@ -1,11 +1,19 @@
 const button = document.querySelector('.menu-button');
 const overlay = document.querySelector('.menu-overlay');
 
-function setMenu(open) {
+function setMenu(open, returnFocus = true) {
   overlay.hidden = !open;
   button.setAttribute('aria-expanded', String(open));
   button.querySelector('.menu-button__label').textContent = open ? 'Close' : 'Menu';
   document.body.classList.toggle('menu-open', open);
+
+  document.querySelectorAll('main, .site-footer').forEach((el) => { el.inert = open; });
+
+  if (open) {
+    overlay.querySelector('a')?.focus();
+  } else if (returnFocus) {
+    button.focus();
+  }
 }
 
 if (button && overlay) {
@@ -16,7 +24,7 @@ if (button && overlay) {
   });
 
   overlay.addEventListener('click', (event) => {
-    if (event.target.closest('a')) setMenu(false);
+    if (event.target.closest('a')) setMenu(false, false);
   });
 }
 

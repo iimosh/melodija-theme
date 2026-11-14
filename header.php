@@ -9,6 +9,8 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <header class="site-header">
     <p class="site-header__note">Ohrid · Since 1992</p>
 

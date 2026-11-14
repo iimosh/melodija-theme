@@ -14,6 +14,7 @@ add_action( 'after_setup_theme', 'melodija_setup' );
 
 require get_theme_file_path( 'inc/products.php' );
 require get_theme_file_path( 'inc/customizer.php' );
+require get_theme_file_path( 'inc/seo.php' );
 
 /** The homepage sections shown in the menu: id => label. The ids match the <section id="..."> in front-page.php. */
 function melodija_sections() {
@@ -41,6 +42,15 @@ function melodija_assets() {
     wp_enqueue_script( 'melodija-main', get_theme_file_uri( 'assets/js/main.js' ), array(), $version, array( 'in_footer' => true ) );
 }
 add_action( 'wp_enqueue_scripts', 'melodija_assets' );
+
+function melodija_resource_hints( $urls, $relation_type ) {
+    if ( 'preconnect' === $relation_type ) {
+        $urls[] = 'https://fonts.googleapis.com';
+        $urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
+    }
+    return $urls;
+}
+add_filter( 'wp_resource_hints', 'melodija_resource_hints', 10, 2 );
 
 function melodija_image( $file, $alt, $class = '' ) {
     $path = get_theme_file_path( 'assets/images/' . $file );

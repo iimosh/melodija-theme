@@ -2,7 +2,7 @@
 get_header();
 ?>
 
-<main>
+<main id="main">
 
     <section class="hero" id="top">
         <div class="hero__wordmark">
@@ -15,9 +15,9 @@ get_header();
         </div>
 
         <div class="hero__products" aria-hidden="true">
-            <?php melodija_image( 'hero-cup.png', 'Melodija cup', 'float float--cup' ); ?>
-            <?php melodija_image( 'hero-purse.png', 'Melodija mini purse', 'float float--purse' ); ?>
-            <?php melodija_image( 'hero-tote.png', 'Melodija tote bag', 'float float--tote' ); ?>
+            <?php melodija_image( 'hero-cup.webp', 'Melodija cup', 'float float--cup' ); ?>
+            <?php melodija_image( 'hero-purse.webp', 'Melodija mini purse', 'float float--purse' ); ?>
+            <?php melodija_image( 'hero-tote.webp', 'Melodija tote bag', 'float float--tote' ); ?>
         </div>
 
         <div class="hero__arch">

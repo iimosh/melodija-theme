@@ -12,6 +12,7 @@ function melodija_customizer_defaults() {
         'marquee_words'   => 'Ohrid, Since 1992, Souvenir shop, Macedonia, Come visit us, Get Directions',
         'instagram_url'   => 'https://www.instagram.com/melodija.souvenirshop/',
         'maps_url'        => 'https://www.google.com/maps/place/Melodija+Souvenir+Shop/@41.1166071,20.7992904,17z',
+        'meta_description' => 'Souvenir shop in Ohrid since 1992: cups, tote bags, wallets, soaps, kitchen textiles, magnets, puzzles and much more. Come visit us!',
     );
 }
 
@@ -41,6 +42,7 @@ function melodija_customize_register( $wp_customize ) {
         'marquee_words'   => array( 'Indigo band words', 'text', 'sanitize_text_field', 'Separate with commas.' ),
         'instagram_url'   => array( 'Instagram link', 'url', 'esc_url_raw', '' ),
         'maps_url'        => array( 'Google Maps link', 'url', 'esc_url_raw', '' ),
+        'meta_description' => array( 'Google description', 'textarea', 'sanitize_text_field', 'The text under the site name in Google results and link previews. Ideally 120–160 characters.' ),
     );
 
     foreach ( $fields as $key => $field ) {

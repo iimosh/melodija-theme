@@ -2,7 +2,7 @@
 Theme Name: Melodija
 Author: Iman Topchi
 Description: Custom theme for Melodija Souvenir Shop, Ohrid
-Version: 1.1
+Version: 1.2
 */
 
 :root {
@@ -34,6 +34,20 @@ body.menu-open { overflow: hidden; }
 
 html { scroll-behavior: smooth; }
 section[id] { scroll-margin-top: var(--header-height); }
+
+.skip-link {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 200;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    background: var(--indigo);
+    color: var(--cream);
+    translate: 0 -200%;          /* hidden above the screen... */
+    transition: translate 0.2s ease;
+}
+.skip-link:focus { translate: 0 0; }   /* ...slides in when it gets keyboard focus */
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
