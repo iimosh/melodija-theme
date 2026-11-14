@@ -21,7 +21,7 @@ get_header();
         </div>
 
         <div class="hero__arch">
-            <p class="hero__tagline">Take a little piece of Ohrid home.</p>
+            <p class="hero__tagline"><?php echo esc_html( melodija_mod( 'hero_tagline' ) ); ?></p>
 
             <svg class="badge" viewBox="0 0 200 200" aria-hidden="true">
                 <defs>
@@ -72,7 +72,7 @@ get_header();
 
         <div class="made-by-us__inner reveal">
             <p class="made-by-us__label">Good to know</p>
-            <p class="made-by-us__statement">Many of our souvenirs are <em>made by us</em>, so you get them at the best price.</p>
+            <p class="made-by-us__statement"><?php echo melodija_sanitize_em_only( melodija_mod( 'made_by_us_text' ) ); ?></p>
         </div>
     </section>
 
@@ -91,7 +91,7 @@ get_header();
     <div class="marquee marquee--indigo" aria-hidden="true">
         <div class="marquee__track">
             <?php for ( $copy = 0; $copy < 2; $copy++ ) : ?>
-                <?php foreach ( array( 'Ohrid', 'Since 1992', 'Souvenir shop', 'Macedonia', 'Come visit us', 'Get Directions' ) as $word ) : ?>
+                <?php foreach ( array_map( 'trim', explode( ',', melodija_mod( 'marquee_words' ) ) ) as $word ) : // "a, b, c" → ['a','b','c'] ?>
                     <span><?php echo esc_html( $word ); ?> ✦</span>
                 <?php endforeach; ?>
             <?php endfor; ?>
@@ -99,8 +99,8 @@ get_header();
     </div>
 
     <?php
-    $maps_url       = 'https://www.google.com/maps/place/Melodija+Souvenir+Shop/@41.1166071,20.7992904,17z';
-    $directions_url = 'https://www.google.com/maps/dir/?api=1&destination=Melodija+Souvenir+Shop+Ohrid';
+    $maps_url       = melodija_mod( 'maps_url' );
+    $directions_url = melodija_directions_url();
     ?>
     <section class="visit" id="visit">
         <header class="section-head reveal">
@@ -138,7 +138,7 @@ get_header();
         </div>
 
         <p class="insta__cta">
-            <a class="button" href="https://www.instagram.com/melodija.souvenirshop/" target="_blank" rel="noopener">Follow @melodija.souvenirshop</a>
+            <a class="button" href="<?php echo esc_url( melodija_mod( 'instagram_url' ) ); ?>" target="_blank" rel="noopener">Follow @melodija.souvenirshop</a>
         </p>
     </section>
 

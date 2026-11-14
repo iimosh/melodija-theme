@@ -8,10 +8,12 @@
 function melodija_setup() {
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'custom-logo' );
 }
 add_action( 'after_setup_theme', 'melodija_setup' );
 
 require get_theme_file_path( 'inc/products.php' );
+require get_theme_file_path( 'inc/customizer.php' );
 
 /** The homepage sections shown in the menu: id => label. The ids match the <section id="..."> in front-page.php. */
 function melodija_sections() {
